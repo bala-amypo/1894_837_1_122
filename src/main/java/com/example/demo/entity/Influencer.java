@@ -1,4 +1,5 @@
 package com.example.demo.entity;
+import 
 
 
 public class Influencer{
@@ -13,4 +14,8 @@ public class Influencer{
 public Influencer{
 
 }
-public Influencer(String name, String socialHandle, )
+public Influencer(String name, String socialHandle, boolean active){
+    this.name = name;
+    this.socialHandle = socialHandle;
+    this.active = active;
+}
