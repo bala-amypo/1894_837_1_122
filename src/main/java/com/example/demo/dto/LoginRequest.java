@@ -1,6 +1,6 @@
-package com.example.demo.dto.LoginRequest;
+// package com.example.demo.dto.LoginRequest;
 
-public class LoginRequest{
-    String email;
-    int password;
-}
+// public class LoginRequest{
+//     String email;
+//     int password;
+// }
