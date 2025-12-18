@@ -1,5 +1,5 @@
 package com.example.demo.entity;
-import 
+import jakarta.persistence.*;
 
 
 public class Influencer{
@@ -10,7 +10,7 @@ public class Influencer{
     private String name;
     private String socialHandle;
     private boolean active;
-} 
+
 public Influencer{
 
 }
@@ -18,4 +18,6 @@ public Influencer(String name, String socialHandle, boolean active){
     this.name = name;
     this.socialHandle = socialHandle;
     this.active = active;
+}
+
 }
