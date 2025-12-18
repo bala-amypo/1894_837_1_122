@@ -13,5 +13,6 @@ public class GlobalExceptionHandler{
         }
     }
 
-    @ExceptionHnadler()
+    @ExceptionHnadler(MethodArgumentNotFoundValidException.class)
+    public 
 }
