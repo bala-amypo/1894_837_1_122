@@ -1,5 +1,7 @@
 package com.example.demo.entity;
 
+import org.springframework.data.annotation.Id;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -44,7 +46,7 @@ public void setPassword(String password){
 public String getRole(){
     return role;
 }
-public String setRole(String role){
+public void setRole(String role){
     this.role = role;
 }
 }
