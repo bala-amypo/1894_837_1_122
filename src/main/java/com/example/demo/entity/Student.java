@@ -1,5 +1,8 @@
 package com.example.demo.entity;
-//import Student from entity;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 
 @Entity
 public class Student{
