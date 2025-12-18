@@ -4,6 +4,9 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.HttpStatus;
 
+import java.util.Map;
+import 
+
 @RestControllerAdvice
 public class GlobalExceptionHandler{
 
@@ -14,5 +17,10 @@ public class GlobalExceptionHandler{
     }
 
     @ExceptionHnadler(MethodArgumentNotFoundValidException.class)
-    public 
+    public ResponseEntity<Map<String, String>> handleMethod(MethodArgumentNotFoundValidException){
+        Map<String, String> error=new HashMap<>();
+
+        
+
+    }
 }
