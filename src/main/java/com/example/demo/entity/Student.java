@@ -13,7 +13,7 @@ public class Student{
     private String name;
     private int password;
     private String role;
-}
+
 public Student(int id, String name, String password, String role){
     this.id = id;
     this.name = name;
@@ -46,4 +46,5 @@ public String getRole(){
 }
 public String setRole(String role){
     this.role = role;
+}
 }
