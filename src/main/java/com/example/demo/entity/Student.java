@@ -35,7 +35,12 @@ public void setName(String name){
 public String getPassword(){
     return password;
 }
-public String setPassword(String password){
+public void setPassword(String password){
     this.password = password;
 }
-public String role
+public String getRole(){
+    return role;
+}
+public String setRole(String role){
+    this.role = role;
+}
