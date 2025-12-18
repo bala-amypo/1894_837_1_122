@@ -11,7 +11,7 @@ public class Student{
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private int id;
     private String name;
-    private int password;
+    private String password;
     private String role;
 
 public Student(int id, String name, String password, String role){
