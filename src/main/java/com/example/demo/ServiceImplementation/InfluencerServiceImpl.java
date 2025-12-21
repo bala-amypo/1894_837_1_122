@@ -1,7 +1,6 @@
 package com.example.demo.service.impl;
 
-import com.example.demo.exception.ResourceNotFoundException;
-import com.example.demo.model.Influencer;
+import com.example.demo.entity.Influencer;
 import com.example.demo.repository.InfluencerRepository;
 import com.example.demo.service.InfluencerService;
 import org.springframework.stereotype.Service;
@@ -10,24 +9,19 @@ import java.util.List;
 @Service
 public class InfluencerServiceImpl implements InfluencerService {
 
-    private final InfluencerRepository repo;
+    private final InfluencerRepository influencerRepository;
 
-    public InfluencerServiceImpl(InfluencerRepository repo) {
-        this.repo = repo;
+    public InfluencerServiceImpl(InfluencerRepository influencerRepository) {
+        this.influencerRepository = influencerRepository;
     }
 
-    public Influencer createInfluencer(Influencer influencer) {
-        repo.findBySocialHandle(influencer.getSocialHandle())
-            .ifPresent(i -> { throw new RuntimeException("Duplicate social handle"); });
-        return repo.save(influencer);
+    @Override
+    public Influencer save(Influencer influencer) {
+        return influencerRepository.save(influencer);
     }
 
-    public List<Influencer> getAllInfluencers() {
-        return repo.findAll();
-    }
-
-    public Influencer getInfluencerById(Long id) {
-        return repo.findById(id)
-            .orElseThrow(() -> new ResourceNotFoundException("Influencer not found"));
+    @Override
+    public List<Influencer> getAll() {
+        return influencerRepository.findAll();
     }
 }
