@@ -1,8 +1,9 @@
-package com.example.demo.service.impl;
+package com.example.demo.service;
 
-import com.example.demo.service.CampaignService;
-import org.springframework.stereotype.Service;
+import com.example.demo.model.Campaign;
+import java.util.List;
 
-@Service   
-public class CampaignServiceImpl implements CampaignService {
+public interface CampaignService {
+    Campaign save(Campaign campaign);
+    List<Campaign> getAll();
 }
