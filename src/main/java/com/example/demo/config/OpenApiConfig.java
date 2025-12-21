@@ -12,13 +12,13 @@ import java.util.List;
 public class OpenApiConfig {
 
     @Bean
-    public OpenAPI openAPI() {
-        return new OpenAPI()
-            .info(new Info()
-                .title("Influencer Campaign ROI Tracker")
-                .version("1.0"))
-            .servers(List.of(
-                new Server().url("https://9416.pro604cr.amypo.ai")
-            ));
-    }
+public OpenAPI openAPI() {
+    return new OpenAPI()
+        .info(new Info()
+            .title("Influencer Campaign ROI Tracker")
+            .version("1.0"))
+        .servers(List.of(
+            new Server().url("https://9416.pro604cr.amypo.ai")
+        ));
+}
 }
