@@ -1,6 +1,8 @@
 package com.example.demo.controller;
 
-import com.example.demo.entity.User;
+import com.example.demo.dto.LoginRequest;
+import com.example.demo.dto.AuthResponse;
+import com.example.demo.model.User;
 import com.example.demo.service.UserService;
 import org.springframework.web.bind.annotation.*;
 
@@ -17,5 +19,18 @@ public class AuthController {
     @PostMapping("/register")
     public User register(@RequestBody User user) {
         return userService.register(user);
+    }
+
+    @PostMapping("/login")
+    public AuthResponse login(@RequestBody LoginRequest request) {
+        User user = userService.findByEmail(request.getEmail());
+
+        AuthResponse response = new AuthResponse();
+        response.setUserId(user.getId());
+        response.setEmail(user.getEmail());
+        response.setRole(user.getRole());
+        response.setToken("dummy-token");
+
+        return response;
     }
 }
