@@ -1,11 +1,11 @@
-package com.example.demo.dto;
+// package com.example.demo.dto;
 
-import lombok.Data;
+// import lombok.Data;
 
-@Data
-public class AuthResponse {
-    private String token;
-    private Long userId;
-    private String email;
-    private String role;
-}
+// @Data
+// public class AuthResponse {
+//     private String token;
+//     private Long userId;
+//     private String email;
+//     private String role;
+// }
