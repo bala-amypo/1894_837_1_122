@@ -30,13 +30,11 @@ public class SecurityConfig {
 
         http
             .csrf(csrf -> csrf.disable())
-=
             .formLogin(form -> form.disable())
             .httpBasic(basic -> basic.disable())
-
             .sessionManagement(sm ->
-                sm.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
-
+                sm.sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+            )
             .authorizeHttpRequests(auth -> auth
                 .requestMatchers(
                     "/",
@@ -46,7 +44,6 @@ public class SecurityConfig {
                 ).permitAll()
                 .anyRequest().authenticated()
             )
-
             .addFilterBefore(
                 jwtFilter,
                 UsernamePasswordAuthenticationFilter.class

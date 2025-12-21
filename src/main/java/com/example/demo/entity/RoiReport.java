@@ -1,10 +1,8 @@
-package com.example.demo.model;
-
-import jakarta.persistence.*;
-import lombok.Data;
-
-@Data
 @Entity
+@Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class RoiReport {
 
     @Id

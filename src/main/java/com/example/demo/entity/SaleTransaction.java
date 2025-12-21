@@ -1,11 +1,8 @@
-package com.example.demo.model;
-
-import jakarta.persistence.*;
-import lombok.Data;
-import java.time.LocalDateTime;
-
-@Data
 @Entity
+@Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class SaleTransaction {
 
     @Id
@@ -13,8 +10,4 @@ public class SaleTransaction {
     private Long id;
 
     private double saleAmount;
-    private LocalDateTime saleDate = LocalDateTime.now();
-
-    @ManyToOne
-    private DiscountCode discountCode;
 }
