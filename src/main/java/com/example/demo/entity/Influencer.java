@@ -1,8 +1,10 @@
 package com.example.demo.model;
 
 import jakarta.persistence.*;
+import lombok.Data;
 import java.util.List;
 
+@Data
 @Entity
 @Table(name = "influencers")
 public class Influencer {
@@ -28,6 +30,4 @@ public class Influencer {
         this.socialHandle = socialHandle;
         this.active = active;
     }
-
-    // getters and setters
 }
