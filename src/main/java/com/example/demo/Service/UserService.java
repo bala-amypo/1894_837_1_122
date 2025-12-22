@@ -1,8 +1,9 @@
-package com.example.demo.Service;
+//userService
+package com.example.demo.service;
 
 import com.example.demo.model.User;
 
 public interface UserService {
-
-    User createUser(User user);
+    User register(User user);
+    User findByEmail(String email);
 }

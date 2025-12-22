@@ -1,9 +1,8 @@
-package com.example.demo.Service;
+//roiService
+package com.example.demo.service;
 
 import com.example.demo.model.RoiReport;
-import java.util.List;
 
 public interface RoiService {
-
-    List<RoiReport> getAllReports();
+    RoiReport calculateRoi();
 }

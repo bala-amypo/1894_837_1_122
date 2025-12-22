@@ -1,6 +1,8 @@
+//saleTransactionrepository
 package com.example.demo.repository;
 
-import org.springframework.stereotype.Repository;
+import com.example.demo.model.SaleTransaction;
+import org.springframework.data.jpa.repository.JpaRepository;
 
-@Repository
-public class SaleTransactionRepository {}
+public interface SaleTransactionRepository extends JpaRepository<SaleTransaction, Long> {
+}

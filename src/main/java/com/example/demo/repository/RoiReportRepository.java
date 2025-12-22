@@ -1,6 +1,8 @@
+//RoireportRepository.java
 package com.example.demo.repository;
 
-import org.springframework.stereotype.Repository;
+import com.example.demo.model.RoiReport;
+import org.springframework.data.jpa.repository.JpaRepository;
 
-@Repository
-public class RoiReportRepository {}
+public interface RoiReportRepository extends JpaRepository<RoiReport, Long> {
+}

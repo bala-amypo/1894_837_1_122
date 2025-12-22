@@ -1,6 +1,8 @@
-package com.example.demo.repository;
+//CampaignRepository
+ package com.example.demo.repository;
 
-import org.springframework.stereotype.Repository;
+import com.example.demo.model.Campaign;
+import org.springframework.data.jpa.repository.JpaRepository;
 
-@Repository
-public class CampaignRepository {}
+public interface CampaignRepository extends JpaRepository<Campaign, Long> {
+}
