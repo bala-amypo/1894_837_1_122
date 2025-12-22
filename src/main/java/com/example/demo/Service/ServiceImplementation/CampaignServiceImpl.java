@@ -1,8 +1,27 @@
-import com.example.demo.service.impl;
+package com.example.demo.service.impl;
+
+import com.example.demo.model.Campaign;
+import com.example.demo.service.CampaignService;
+import org.springframework.stereotype.Service;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Service
 public class CampaignServiceImpl implements CampaignService {
-    public Campaign updateCampaign(Long id, Campaign c){ return c; }
-    public Campaign getCampaignById(Long id){ return new Campaign(); }
-    public List<Campaign> getAllCampaigns(){ return new ArrayList<>(); }
+
+    @Override
+    public Campaign updateCampaign(Long id, Campaign campaign) {
+        return campaign;
+    }
+
+    @Override
+    public Campaign getCampaignById(Long id) {
+        return new Campaign();
+    }
+
+    @Override
+    public List<Campaign> getAllCampaigns() {
+        return new ArrayList<>();
+    }
 }
