@@ -1,8 +1,7 @@
-package com.example.demo.service;
+package com.example.demo.Service;
 
-import com.example.demo.model.RoiReport;
+import com.example.demo.model.Influencer;
 import java.util.List;
 
-public interface RoiService {
-    List<RoiReport> getReportsForInfluencer(Long influencerId);
-}
+public interface InfluencerService {
+    

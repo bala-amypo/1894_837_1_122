@@ -1,11 +1,10 @@
-package com.example.demo.service;
+package com.example.demo.Service;
 
-import com.example.demo.model.SaleTransaction;
+import com.example.demo.model.Influencer;
 import java.util.List;
 
 public interface SaleTransactionService {
-    SaleTransaction createSale(SaleTransaction tx);
-    List<SaleTransaction> getSalesForCode(Long codeId);
-    List<SaleTransaction> getSalesForInfluencer(Long influencerId);
-    List<SaleTransaction> getSalesForCampaign(Long campaignId);
+    Influencer createInfluencer(Influencer influencer);
+    Influencer getInfluencerById(Long id);
+    List<Influencer> getAllInfluencers();
 }

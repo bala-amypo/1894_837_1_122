@@ -1,8 +1,8 @@
-package com.example.demo.service;
+package com.example.demo.Service;
 
-import com.example.demo.model.User;
+import com.example.demo.model.Influencer;
+import java.util.List;
 
 public interface UserService {
-    User findByEmail(String email);
-    User findById(Long id);
+    
 }
