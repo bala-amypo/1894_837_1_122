@@ -1,3 +1,5 @@
+import com.example.demo.service.impl;
+
 package com.example.demo.repository;
 
 import com.example.demo.model.Campaign;
