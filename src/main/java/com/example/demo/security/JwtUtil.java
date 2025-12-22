@@ -2,12 +2,11 @@ package com.example.demo.security;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
-import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.security.Keys;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
-import java.security.Key;
+import javax.crypto.SecretKey;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -17,13 +16,14 @@ import java.util.function.Function;
 public class JwtUtil {
 
     @Value("${jwt.secret}")
-    private String secret = "your-very-long-secret-key-here-at-least-32-chars"; // Change in application.properties
+    private String secret = "yourVeryLongSecretKeyAtLeast32Characters1234567890";
 
     @Value("${jwt.expiration}")
-    private long expiration = 3600000; // 1 hour in ms
+    private long expiration = 3600000; // 1 hour
 
-    private Key getSigningKey() {
-        return Keys.hmacShaKeyFor(secret.getBytes());
+    private SecretKey getSigningKey() {
+        byte[] keyBytes = secret.getBytes();
+        return Keys.hmacShaKeyFor(keyBytes);
     }
 
     public String generateToken(Long userId, String email, String role) {
@@ -36,7 +36,7 @@ public class JwtUtil {
                 .claims(claims)
                 .issuedAt(new Date(System.currentTimeMillis()))
                 .expiration(new Date(System.currentTimeMillis() + expiration))
-                .signWith(getSigningKey(), Jwts.SIG.HS256) // Updated for newer versions
+                .signWith(getSigningKey())  // Correct for JJWT 0.12+
                 .compact();
     }
 
