@@ -1,10 +1,12 @@
-// discountCodeservice
 package com.example.demo.service.impl;
 
+import com.example.demo.exception.ResourceNotFoundException;
 import com.example.demo.model.DiscountCode;
 import com.example.demo.repository.DiscountCodeRepository;
 import com.example.demo.service.DiscountCodeService;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class DiscountCodeServiceImpl implements DiscountCodeService {
@@ -16,7 +18,34 @@ public class DiscountCodeServiceImpl implements DiscountCodeService {
     }
 
     @Override
-    public DiscountCode save(DiscountCode discountCode) {
-        return discountCodeRepository.save(discountCode);
+    public DiscountCode getDiscountCodeById(Long id) {
+        return discountCodeRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Discount code not found"));
+    }
+
+    @Override
+    public DiscountCode updateDiscountCode(Long id, DiscountCode updated) {
+        DiscountCode existing = discountCodeRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Discount code not found"));
+        if (updated.getCodeValue() != null) {
+            existing.setCodeValue(updated.getCodeValue());
+        }
+        if (updated.getDiscountPercentage() != null) {
+            if (updated.getDiscountPercentage() < 0 || updated.getDiscountPercentage() > 100) {
+                throw new IllegalArgumentException("Discount percentage must be between 0 and 100");
+            }
+            existing.setDiscountPercentage(updated.getDiscountPercentage());
+        }
+        return discountCodeRepository.save(existing);
+    }
+
+    @Override
+    public List<DiscountCode> getCodesForInfluencer(Long influencerId) {
+        return discountCodeRepository.findByInfluencerId(influencerId);
+    }
+
+    @Override
+    public List<DiscountCode> getCodesForCampaign(Long campaignId) {
+        return discountCodeRepository.findByCampaignId(campaignId);
     }
 }
