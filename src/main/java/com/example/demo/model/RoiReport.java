@@ -1,25 +1,19 @@
 package com.example.demo.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-
-@Entity
-@Data
-@Builder
-@NoArgsConstructor
-@AllArgsConstructor
 public class RoiReport {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    private double revenue;
+    private double cost;
 
-    private double totalRevenue;
-    private double roiPercentage;
+    public RoiReport() {}
+
+    public Long getId() { return id; }
+    public void setId(Long id) { this.id = id; }
+
+    public double getRevenue() { return revenue; }
+    public void setRevenue(double revenue) { this.revenue = revenue; }
+
+    public double getCost() { return cost; }
+    public void setCost(double cost) { this.cost = cost; }
 }

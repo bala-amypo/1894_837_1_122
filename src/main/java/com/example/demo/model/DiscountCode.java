@@ -1,22 +1,19 @@
 package com.example.demo.model;
 
-import jakarta.persistence.*;
-import lombok.Data;
-
-@Data
-@Entity
 public class DiscountCode {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     private String code;
-    private double percentage;
+    private double discount;
 
-    @ManyToOne
-    private Influencer influencer;
+    public DiscountCode() {}
 
-    @ManyToOne
-    private Campaign campaign;
+    public Long getId() { return id; }
+    public void setId(Long id) { this.id = id; }
+
+    public String getCode() { return code; }
+    public void setCode(String code) { this.code = code; }
+
+    public double getDiscount() { return discount; }
+    public void setDiscount(double discount) { this.discount = discount; }
 }
