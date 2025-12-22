@@ -1,8 +1,6 @@
 package com.example.demo.repository;
 
-import com.example.demo.model.DiscountCode;
-import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
-public interface DiscountCodeRepository extends JpaRepository<DiscountCode, Long> {
-    DiscountCode findByCode(String code);
-}
+@Repository
+public class CampaignRepository {}
