@@ -1,22 +1,22 @@
-package com.example.demo.Service.ServiceImplementation;
+// discountCodeservice
+package com.example.demo.service.impl;
 
-import com.example.demo.Service.DiscountCodeService;
 import com.example.demo.model.DiscountCode;
+import com.example.demo.repository.DiscountCodeRepository;
+import com.example.demo.service.DiscountCodeService;
 import org.springframework.stereotype.Service;
-
-import java.util.ArrayList;
-import java.util.List;
 
 @Service
 public class DiscountCodeServiceImpl implements DiscountCodeService {
 
-    @Override
-    public DiscountCode createDiscountCode(DiscountCode discountCode) {
-        return discountCode;
+    private final DiscountCodeRepository discountCodeRepository;
+
+    public DiscountCodeServiceImpl(DiscountCodeRepository discountCodeRepository) {
+        this.discountCodeRepository = discountCodeRepository;
     }
 
     @Override
-    public List<DiscountCode> getAllDiscountCodes() {
-        return new ArrayList<>();
+    public DiscountCode save(DiscountCode discountCode) {
+        return discountCodeRepository.save(discountCode);
     }
 }

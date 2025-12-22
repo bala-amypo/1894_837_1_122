@@ -1,27 +1,29 @@
-package com.example.demo.Service.ServiceImplementation;
+// CampaingnServiceImp
+package com.example.demo.service.impl;
 
-import com.example.demo.Service.CampaignService;
 import com.example.demo.model.Campaign;
+import com.example.demo.repository.CampaignRepository;
+import com.example.demo.service.CampaignService;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
 public class CampaignServiceImpl implements CampaignService {
 
-    @Override
-    public Campaign createCampaign(Campaign campaign) {
-        return campaign;
+    private final CampaignRepository campaignRepository;
+
+    public CampaignServiceImpl(CampaignRepository campaignRepository) {
+        this.campaignRepository = campaignRepository;
     }
 
     @Override
-    public Campaign getCampaignById(Long id) {
-        return new Campaign();
+    public Campaign save(Campaign campaign) {
+        return campaignRepository.save(campaign);
     }
 
     @Override
-    public List<Campaign> getAllCampaigns() {
-        return new ArrayList<>();
+    public List<Campaign> getAll() {
+        return campaignRepository.findAll();
     }
 }

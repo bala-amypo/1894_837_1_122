@@ -1,27 +1,29 @@
-package com.example.demo.Service.ServiceImplementation;
+// InfluencerService
+package com.example.demo.service.impl;
 
-import com.example.demo.Service.InfluencerService;
 import com.example.demo.model.Influencer;
+import com.example.demo.repository.InfluencerRepository;
+import com.example.demo.service.InfluencerService;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
 public class InfluencerServiceImpl implements InfluencerService {
 
-    @Override
-    public Influencer createInfluencer(Influencer influencer) {
-        return influencer;
+    private final InfluencerRepository influencerRepository;
+
+    public InfluencerServiceImpl(InfluencerRepository influencerRepository) {
+        this.influencerRepository = influencerRepository;
     }
 
     @Override
-    public Influencer getInfluencerById(Long id) {
-        return new Influencer();
+    public Influencer save(Influencer influencer) {
+        return influencerRepository.save(influencer);
     }
 
     @Override
-    public List<Influencer> getAllInfluencers() {
-        return new ArrayList<>();
+    public List<Influencer> getAll() {
+        return influencerRepository.findAll();
     }
 }

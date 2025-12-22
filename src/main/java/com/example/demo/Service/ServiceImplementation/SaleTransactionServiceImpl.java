@@ -1,22 +1,22 @@
-package com.example.demo.Service.ServiceImplementation;
+// sale transaction
+package com.example.demo.service.impl;
 
-import com.example.demo.Service.SaleTransactionService;
 import com.example.demo.model.SaleTransaction;
+import com.example.demo.repository.SaleTransactionRepository;
+import com.example.demo.service.SaleTransactionService;
 import org.springframework.stereotype.Service;
-
-import java.util.ArrayList;
-import java.util.List;
 
 @Service
 public class SaleTransactionServiceImpl implements SaleTransactionService {
 
-    @Override
-    public SaleTransaction createTransaction(SaleTransaction transaction) {
-        return transaction;
+    private final SaleTransactionRepository saleTransactionRepository;
+
+    public SaleTransactionServiceImpl(SaleTransactionRepository saleTransactionRepository) {
+        this.saleTransactionRepository = saleTransactionRepository;
     }
 
     @Override
-    public List<SaleTransaction> getAllTransactions() {
-        return new ArrayList<>();
+    public SaleTransaction save(SaleTransaction saleTransaction) {
+        return saleTransactionRepository.save(saleTransaction);
     }
 }
