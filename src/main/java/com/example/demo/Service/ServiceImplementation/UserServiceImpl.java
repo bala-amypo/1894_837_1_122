@@ -1,7 +1,14 @@
-import com.example.demo.service.impl;
+package com.example.demo.Service.ServiceImplementation;
+
+import com.example.demo.Service.UserService;
+import com.example.demo.model.User;
+import org.springframework.stereotype.Service;
 
 @Service
 public class UserServiceImpl implements UserService {
-    public User findByEmail(String email){ return new User(); }
-    public User findById(Long id){ return new User(); }
+
+    @Override
+    public User createUser(User user) {
+        return user;
+    }
 }

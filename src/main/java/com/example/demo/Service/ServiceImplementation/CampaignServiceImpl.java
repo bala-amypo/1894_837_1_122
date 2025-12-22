@@ -1,7 +1,7 @@
-package com.example.demo.service.impl;
+package com.example.demo.Service.ServiceImplementation;
 
+import com.example.demo.Service.CampaignService;
 import com.example.demo.model.Campaign;
-import com.example.demo.service.CampaignService;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -11,7 +11,7 @@ import java.util.List;
 public class CampaignServiceImpl implements CampaignService {
 
     @Override
-    public Campaign updateCampaign(Long id, Campaign campaign) {
+    public Campaign createCampaign(Campaign campaign) {
         return campaign;
     }
 

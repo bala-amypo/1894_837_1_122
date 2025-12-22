@@ -1,10 +1,22 @@
-import com.example.demo.service.impl;
+package com.example.demo.Service.ServiceImplementation;
 
+import com.example.demo.Service.SaleTransactionService;
+import com.example.demo.model.SaleTransaction;
+import org.springframework.stereotype.Service;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Service
 public class SaleTransactionServiceImpl implements SaleTransactionService {
-    public SaleTransaction createSale(SaleTransaction tx){ return tx; }
-    public List<SaleTransaction> getSalesForCode(Long id){ return new ArrayList<>(); }
-    public List<SaleTransaction> getSalesForInfluencer(Long id){ return new ArrayList<>(); }
-    public List<SaleTransaction> getSalesForCampaign(Long id){ return new ArrayList<>(); }
+
+    @Override
+    public SaleTransaction createTransaction(SaleTransaction transaction) {
+        return transaction;
+    }
+
+    @Override
+    public List<SaleTransaction> getAllTransactions() {
+        return new ArrayList<>();
+    }
 }

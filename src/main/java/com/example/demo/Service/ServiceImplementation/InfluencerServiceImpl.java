@@ -1,34 +1,27 @@
-package com.example.demo.controller;
+package com.example.demo.Service.ServiceImplementation;
 
+import com.example.demo.Service.InfluencerService;
 import com.example.demo.model.Influencer;
-import com.example.demo.service.InfluencerService;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
-@RestController
-@RequestMapping("/influencers")
-public class InfluencerController {
+@Service
+public class InfluencerServiceImpl implements InfluencerService {
 
-    private final InfluencerService influencerService;
-
-    public InfluencerController(InfluencerService influencerService) {
-        this.influencerService = influencerService;
+    @Override
+    public Influencer createInfluencer(Influencer influencer) {
+        return influencer;
     }
 
-    @PostMapping
-    public ResponseEntity<Influencer> create(@RequestBody Influencer influencer) {
-        return ResponseEntity.ok(influencerService.createInfluencer(influencer));
+    @Override
+    public Influencer getInfluencerById(Long id) {
+        return new Influencer();
     }
 
-    @GetMapping
-    public ResponseEntity<List<Influencer>> getAll() {
-        return ResponseEntity.ok(influencerService.getAllInfluencers());
-    }
-
-    @GetMapping("/{id}")
-    public ResponseEntity<Influencer> getById(@PathVariable Long id) {
-        return ResponseEntity.ok(influencerService.getInfluencerById(id));
+    @Override
+    public List<Influencer> getAllInfluencers() {
+        return new ArrayList<>();
     }
 }

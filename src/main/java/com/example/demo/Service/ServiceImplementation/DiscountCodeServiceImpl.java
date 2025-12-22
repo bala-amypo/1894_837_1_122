@@ -1,9 +1,22 @@
-import com.example.demo.service.impl;
+package com.example.demo.Service.ServiceImplementation;
+
+import com.example.demo.Service.DiscountCodeService;
+import com.example.demo.model.DiscountCode;
+import org.springframework.stereotype.Service;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Service
 public class DiscountCodeServiceImpl implements DiscountCodeService {
-    public DiscountCode getDiscountCodeById(Long id){ return new DiscountCode(); }
-    public DiscountCode updateDiscountCode(Long id, DiscountCode c){ return c; }
-    public List<DiscountCode> getCodesForInfluencer(Long id){ return new ArrayList<>(); }
-    public List<DiscountCode> getCodesForCampaign(Long id){ return new ArrayList<>(); }
+
+    @Override
+    public DiscountCode createDiscountCode(DiscountCode discountCode) {
+        return discountCode;
+    }
+
+    @Override
+    public List<DiscountCode> getAllDiscountCodes() {
+        return new ArrayList<>();
+    }
 }
