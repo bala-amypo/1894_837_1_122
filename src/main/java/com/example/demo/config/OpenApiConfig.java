@@ -18,7 +18,7 @@ public class OpenApiConfig {
                         .title("Influencer Campaign ROI Tracker")
                         .version("1.0"))
                 .servers(List.of(
-                        new Server().url("https://9416.pro604cr.amypo.ai/")
+                        new Server().url("https://9221.408procr.amypo.ai/")
                 ));
     }
 }
