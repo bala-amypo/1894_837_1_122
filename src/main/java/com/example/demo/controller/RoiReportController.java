@@ -4,7 +4,6 @@ import com.example.demo.model.RoiReport;
 import com.example.demo.service.RoiService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 
 @RestController
@@ -17,18 +16,8 @@ public class RoiReportController {
         this.roiService = roiService;
     }
 
-    @PostMapping("/code/{discountCodeId}")
-    public ResponseEntity<RoiReport> generateReportForCode(@PathVariable Long discountCodeId) {
-        return ResponseEntity.ok(roiService.generateReportForCode(discountCodeId));
-    }
-
-    @GetMapping("/{reportId}")
-    public ResponseEntity<RoiReport> getReport(@PathVariable Long reportId) {
-        return ResponseEntity.ok(roiService.getReportById(reportId));
-    }
-
-    @GetMapping("/influencer/{influencerId}")
-    public ResponseEntity<List<RoiReport>> getReportsForInfluencer(@PathVariable Long influencerId) {
-        return ResponseEntity.ok(roiService.getReportsForInfluencer(influencerId));
+    @GetMapping("/influencer/{id}")
+    public ResponseEntity<List<RoiReport>> getReports(@PathVariable Long id) {
+        return ResponseEntity.ok(roiService.getReportsForInfluencer(id));
     }
 }
