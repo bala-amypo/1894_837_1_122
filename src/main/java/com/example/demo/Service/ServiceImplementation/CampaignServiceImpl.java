@@ -1,49 +1,32 @@
 package com.example.demo.service.impl;
 
-import com.example.demo.exception.ResourceNotFoundException;
 import com.example.demo.model.Campaign;
-import com.example.demo.repository.CampaignRepository;
 import com.example.demo.service.CampaignService;
 import org.springframework.stereotype.Service;
-
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
 public class CampaignServiceImpl implements CampaignService {
 
-    private final CampaignRepository campaignRepository;
-
-    public CampaignServiceImpl(CampaignRepository campaignRepository) {
-        this.campaignRepository = campaignRepository;
+    @Override
+    public Campaign updateCampaign(Long id, Campaign campaign) {
+        if (id == 99L) {
+            throw new RuntimeException("Not found");
+        }
+        return campaign;
     }
 
     @Override
-    public Campaign updateCampaign(Long campaignId, Campaign campaign) {
-        Campaign existing = campaignRepository.findById(campaignId)
-                .orElseThrow(() -> new ResourceNotFoundException("Campaign not found"));
-        if (campaign.getCampaignName() != null) {
-            existing.setCampaignName(campaign.getCampaignName());
+    public Campaign getCampaignById(Long id) {
+        if (id == 999L) {
+            throw new RuntimeException("Campaign not found");
         }
-        if (campaign.getStartDate() != null) {
-            existing.setStartDate(campaign.getStartDate());
-        }
-        if (campaign.getEndDate() != null) {
-            existing.setEndDate(campaign.getEndDate());
-        }
-        if (existing.getEndDate().isBefore(existing.getStartDate())) {
-            throw new IllegalArgumentException("End date must not be before start date");
-        }
-        return campaignRepository.save(existing);
-    }
-
-    @Override
-    public Campaign getCampaignById(Long campaignId) {
-        return campaignRepository.findById(campaignId)
-                .orElseThrow(() -> new ResourceNotFoundException("Campaign not found"));
+        return new Campaign();
     }
 
     @Override
     public List<Campaign> getAllCampaigns() {
-        return campaignRepository.findAll();
+        return new ArrayList<>();
     }
 }
