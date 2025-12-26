@@ -1,33 +1,36 @@
 package com.example.demo.service.impl;
 
+import java.util.List;
+
+import org.springframework.stereotype.Service;
+
 import com.example.demo.model.User;
 import com.example.demo.service.UserService;
-import org.springframework.stereotype.Service;
 
 @Service
 public class UserServiceImpl implements UserService {
 
     @Override
-    public User registerUser(User user) {
+    public User register(User user) {
         if (user.getRole() == null) {
             user.setRole("USER");
         }
+        // TODO: save user to DB
         return user;
     }
 
     @Override
-    public User findByEmail(String email) {
-        if (email == null) {
-            throw new RuntimeException("User not found");
+    public String login(User user) {
+        if (user.getEmail() == null || user.getPassword() == null) {
+            throw new RuntimeException("Invalid credentials");
         }
-        return new User();
+        // TODO: validate email & password
+        return "Login successful";
     }
 
     @Override
-    public User findById(Long id) {
-        if (id == 999L) {
-            throw new RuntimeException("User not found");
-        }
-        return new User();
+    public List<User> getAllUsers() {
+        // TODO: fetch from DB
+        return List.of();
     }
 }
