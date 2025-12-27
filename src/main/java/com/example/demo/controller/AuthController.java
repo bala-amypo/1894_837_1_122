@@ -29,6 +29,9 @@ public class AuthController {
     // ✅ REGISTER
     @PostMapping("/register")
     public ResponseEntity<User> register(@RequestBody User user) {
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
+        user.setRole("ADMIN");
+
         return ResponseEntity.ok(userService.registerUser(user));
     }
 
@@ -38,16 +41,12 @@ public ResponseEntity<AuthResponse> login(@RequestBody LoginRequest request) {
 
     User user = userService.findByEmail(request.getEmail());
 
-    // ✅ USER NOT FOUND
     if (user == null) {
-        return ResponseEntity.status(401)
-                .body(null);
+        return ResponseEntity.status(401).build();
     }
 
-    // ✅ PASSWORD MISMATCH
     if (!passwordEncoder.matches(request.getPassword(), user.getPassword())) {
-        return ResponseEntity.status(401)
-                .body(null);
+        return ResponseEntity.status(401).build();
     }
 
     String token = jwtUtil.generateToken(
@@ -56,13 +55,13 @@ public ResponseEntity<AuthResponse> login(@RequestBody LoginRequest request) {
             user.getId()
     );
 
-    AuthResponse response = new AuthResponse(
-            token,
-            user.getId(),
-            user.getEmail(),
-            user.getRole()
+    return ResponseEntity.ok(
+            new AuthResponse(
+                    token,
+                    user.getId(),
+                    user.getEmail(),
+                    user.getRole()
+            )
     );
-
-    return ResponseEntity.ok(response);
 }
 }
