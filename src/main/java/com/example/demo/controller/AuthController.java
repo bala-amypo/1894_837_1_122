@@ -28,12 +28,29 @@ public class AuthController {
 
     // ✅ REGISTER
     @PostMapping("/register")
-    public ResponseEntity<User> register(@RequestBody User user) {
+public ResponseEntity<User> register(@RequestBody User user) {
+
+    // ✅ BASIC NULL CHECK (prevents 500)
+    if (user.getEmail() == null || user.getPassword() == null) {
+        return ResponseEntity.status(400).body(null);
+    }
+
+    try {
+        // ✅ ENCODE PASSWORD
         user.setPassword(passwordEncoder.encode(user.getPassword()));
+
+        // ✅ SET DEFAULT ROLE
         user.setRole("ADMIN");
 
-        return ResponseEntity.ok(userService.registerUser(user));
+        User savedUser = userService.register(user);
+
+        return ResponseEntity.ok(savedUser);
+
+    } catch (Exception e) {
+        // ✅ HANDLE DUPLICATE / DB ISSUES SAFELY
+        return ResponseEntity.status(400).body(null);
     }
+}
 
     // ✅ LOGIN (TOKEN GENERATION)
     @PostMapping("/login")
