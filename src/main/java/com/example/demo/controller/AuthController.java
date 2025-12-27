@@ -34,27 +34,35 @@ public class AuthController {
 
     // ✅ LOGIN (TOKEN GENERATION)
     @PostMapping("/login")
-    public ResponseEntity<AuthResponse> login(@RequestBody LoginRequest request) {
+public ResponseEntity<AuthResponse> login(@RequestBody LoginRequest request) {
 
-        User user = userService.findByEmail(request.getEmail());
+    User user = userService.findByEmail(request.getEmail());
 
-        if (!passwordEncoder.matches(request.getPassword(), user.getPassword())) {
-            throw new RuntimeException("Invalid credentials");
-        }
-
-        String token = jwtUtil.generateToken(
-                user.getEmail(),
-                user.getRole(),
-                user.getId()
-        );
-
-        AuthResponse response = new AuthResponse(
-                token,
-                user.getId(),
-                user.getEmail(),
-                user.getRole()
-        );
-
-        return ResponseEntity.ok(response);
+    // ✅ USER NOT FOUND
+    if (user == null) {
+        return ResponseEntity.status(401)
+                .body(null);
     }
+
+    // ✅ PASSWORD MISMATCH
+    if (!passwordEncoder.matches(request.getPassword(), user.getPassword())) {
+        return ResponseEntity.status(401)
+                .body(null);
+    }
+
+    String token = jwtUtil.generateToken(
+            user.getEmail(),
+            user.getRole(),
+            user.getId()
+    );
+
+    AuthResponse response = new AuthResponse(
+            token,
+            user.getId(),
+            user.getEmail(),
+            user.getRole()
+    );
+
+    return ResponseEntity.ok(response);
+}
 }
